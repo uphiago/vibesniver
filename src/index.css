@@ -493,13 +493,95 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .main-headline {
-    font-size: clamp(2rem, 12vw, 4rem);
+    font-size: clamp(1.5rem, 8vw, 2.5rem);
+    white-space: normal;
+    line-height: 1.1;
+    padding: 0 10px;
+  }
+
+  .sub-headline {
+    font-size: clamp(0.8rem, 3.5vw, 1.2rem);
+    padding: 0 15px;
+  }
+
+  .headline-container {
+    top: 3%;
+    width: 95%;
+  }
+
+  .bottom-message {
+    bottom: 3%;
+    width: 90%;
+  }
+
+  .bottom-text {
+    font-size: clamp(0.7rem, 3vw, 1rem);
   }
 
   .floating-emoji,
   .balloon,
   .gift-box {
-    font-size: clamp(1.5rem, 8vw, 3rem);
+    font-size: clamp(1.2rem, 5vw, 2rem);
+  }
+
+  .sparkle {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Smaller modal on mobile */
+  .crazy-modal {
+    padding: 1rem 1.5rem;
+    margin: 10px;
+    max-width: 85vw;
+  }
+
+  .modal-emoji {
+    font-size: 3rem;
+  }
+
+  .modal-text {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .modal-sparkles {
+    font-size: 1.2rem;
+  }
+
+  /* Smaller neon signs */
+  .neon-sign {
+    font-size: clamp(0.6rem, 2.5vw, 1rem);
+    padding: 0.3rem 0.6rem;
+    border-width: 2px;
+  }
+
+  /* Reduce flying text */
+  .flying-text {
+    font-size: clamp(0.8rem, 3vw, 1.2rem);
+  }
+
+  /* Thinner borders */
+  .crazy-border {
+    border-width: 4px;
+  }
+
+  .pulse-border {
+    border-width: 8px;
+  }
+
+  /* Smaller spinning circles */
+  .spin-circle {
+    border-width: 2px;
+  }
+
+  /* Smaller laser beams */
+  .laser-beam {
+    width: 2px;
+  }
+
+  /* Reduce emoji drop size */
+  .emoji-drop {
+    font-size: 20px !important;
   }
 }
 

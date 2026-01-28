@@ -2,12 +2,11 @@ import { motion } from 'framer-motion'
 
 const emojis = ['🎉', '🎊', '🥳', '🎈', '🎁', '✨', '💖', '🌟', '🔥', '💫', '🎵', '🎶', '🍰', '🧁', '🍭', '🎀', '👑', '💎', '🦄', '🌈', '⭐', '💥', '🎯', '🏆', '🎪']
 
-const balloonColors = ['🎈']
-const giftColors = ['🎁']
-
 export default function FloatingElements() {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
+
     // Generate random positions for emojis
-    const floatingEmojis = Array.from({ length: 25 }, (_, i) => ({
+    const floatingEmojis = Array.from({ length: isMobile ? 12 : 25 }, (_, i) => ({
         emoji: emojis[i % emojis.length],
         left: `${Math.random() * 90 + 5}%`,
         top: `${Math.random() * 80 + 10}%`,
@@ -18,23 +17,23 @@ export default function FloatingElements() {
     }))
 
     // Balloons
-    const balloons = Array.from({ length: 8 }, (_, i) => ({
-        left: `${10 + i * 12}%`,
+    const balloons = Array.from({ length: isMobile ? 4 : 8 }, (_, i) => ({
+        left: `${10 + i * (isMobile ? 24 : 12)}%`,
         bottom: `${-10 - Math.random() * 20}%`,
         duration: Math.random() * 3 + 4,
         delay: Math.random() * 2,
     }))
 
     // Gift boxes
-    const gifts = Array.from({ length: 6 }, (_, i) => ({
-        left: `${15 + i * 15}%`,
+    const gifts = Array.from({ length: isMobile ? 3 : 6 }, (_, i) => ({
+        left: `${15 + i * (isMobile ? 30 : 15)}%`,
         top: `${60 + Math.random() * 30}%`,
         duration: Math.random() * 2 + 2,
         delay: Math.random() * 3,
     }))
 
     // Sparkles
-    const sparkles = Array.from({ length: 30 }, (_, i) => ({
+    const sparkles = Array.from({ length: isMobile ? 15 : 30 }, (_, i) => ({
         left: `${Math.random() * 100}%`,
         top: `${Math.random() * 100}%`,
         duration: Math.random() * 1 + 0.5,

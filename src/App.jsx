@@ -14,24 +14,26 @@ import './index.css'
 
 // Random colors for neon signs
 const neonColors = ['#ff00ff', '#00ffff', '#ffff00', '#ff6600', '#9d00ff', '#00ff66']
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
 // Spin circles
-const spinCircles = Array.from({ length: 8 }, (_, i) => ({
+const spinCircles = Array.from({ length: isMobile ? 4 : 8 }, (_, i) => ({
   size: 100 + i * 80,
   color: neonColors[i % neonColors.length],
   duration: 10 + i * 3,
 }))
 
-// Laser beams
-const laserBeams = Array.from({ length: 6 }, (_, i) => ({
+const laserBeams = Array.from({ length: isMobile ? 3 : 6 }, (_, i) => ({
   color: neonColors[i % neonColors.length],
   duration: 3 + Math.random() * 3,
   angle: -30 + Math.random() * 60,
   delay: i * 0.5,
 }))
 
-// Neon signs
-const neonSigns = [
+const neonSigns = isMobile ? [
+  { text: '🎂 PARABÉNS! 🎂', top: '25%', left: '5%', color: '#ff00ff' },
+  { text: '🎉 PARTY! 🎉', bottom: '25%', right: '5%', color: '#00ffff' },
+] : [
   { text: '🎂 PARABÉNS! 🎂', top: '20%', left: '5%', color: '#ff00ff' },
   { text: '🎉 PARTY MODE ON! 🎉', top: '70%', right: '5%', color: '#00ffff' },
   { text: '⭐ É O CAIODEV! ⭐', bottom: '20%', left: '5%', color: '#ffff00' },

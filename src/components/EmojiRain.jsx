@@ -5,27 +5,30 @@ const emojis = ['🎂', '🎉', '🎈', '🎁', '🥳', '🍰', '🧁', '🎊', 
 
 export default function EmojiRain() {
     const [drops, setDrops] = useState([])
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
 
     useEffect(() => {
+        const interval = isMobile ? 200 : 100
+        const maxDrops = isMobile ? 25 : 50
+
         const addDrop = () => {
             const newDrop = {
                 id: Date.now() + Math.random(),
                 emoji: emojis[Math.floor(Math.random() * emojis.length)],
                 x: Math.random() * window.innerWidth,
-                size: Math.random() * 30 + 20,
+                size: isMobile ? Math.random() * 20 + 15 : Math.random() * 30 + 20,
                 duration: Math.random() * 3 + 2,
                 delay: 0,
                 rotation: Math.random() * 720 - 360,
             }
 
-            setDrops(prev => [...prev.slice(-50), newDrop]) // Keep max 50 drops
+            setDrops(prev => [...prev.slice(-maxDrops), newDrop])
         }
 
-        // Add drops frequently
-        const interval = setInterval(addDrop, 100)
+        const addInterval = setInterval(addDrop, interval)
 
-        return () => clearInterval(interval)
-    }, [])
+        return () => clearInterval(addInterval)
+    }, [isMobile])
 
     return (
         <div className="emoji-rain-container">
